@@ -1,0 +1,50 @@
+#User function Template for python3
+from collections import Counter
+class Solution:
+    def findTwoElement( self,arr, n): 
+        # code here
+        dct={}
+        l=len(arr)
+        for i in arr:
+            if i not in dct:
+                dct[i]=True
+            else:
+                rep=i
+        for i in range(1,l+1):
+            if i not in dct:
+                miss=i
+        return [rep, miss]
+        '''
+        dct = Counter(arr)
+        for k,v in dct.items():
+            if v>1:
+                rep=k
+                break
+        i=1
+        miss=0
+        ks = sorted(dct)
+        for k in ks:
+            if k!=i:
+                miss=i
+                break
+            i+=1
+        if miss==0 :
+            miss=n
+        return [rep, miss]
+        '''
+                
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+
+    tc=int(input())
+    while tc > 0:
+        n=int(input())
+        arr=list(map(int, input().strip().split()))
+        ob = Solution()
+        ans=ob.findTwoElement(arr, n)
+        print(str(ans[0])+" "+str(ans[1]))
+        tc=tc-1
+# } Driver Code Ends
