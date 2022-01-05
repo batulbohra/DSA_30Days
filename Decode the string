@@ -1,0 +1,53 @@
+#User function Template for python3
+
+class Solution:
+    def decodedString(self, s):
+        # code here
+        st=[]
+        res=''
+        num=[]
+        idx=0
+        while idx<len(s):
+            i = s[idx]
+            if i=='[':
+                st.append(i)
+                idx+=1
+            elif i.isalpha():
+                if st and st[-1].isalpha():
+                    st[-1]+=i
+                else:
+                    st.append(i)
+                idx+=1
+            elif i==']':
+                tmp=''
+                while st and st[-1]!='[':
+                    tmp = st.pop()+tmp
+                st.pop()
+                if num:
+                    cnt=num.pop()
+                    res=''
+                    for i in range(int(cnt)):
+                        res = tmp+res
+                st.append(res)
+                idx+=1
+            else:
+                t=''
+                while idx<len(s) and s[idx].isnumeric():
+                    t+=s[idx]
+                    idx+=1
+                num.append(int(t))
+                #print(num)
+        return res
+                    
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        s = input()
+        
+        ob = Solution()
+        print(ob.decodedString(s))
+# } Driver Code Ends
