@@ -1,0 +1,36 @@
+#User function Template for python3
+
+class Solution:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def doOverlap(self, l1, r1, l2, r2):
+        #code here
+        if (l1.x == r1.x or l1.y == r1.y or l2.x == r2.x or l2.y == r2.y):
+            return 0
+        if(l1.x >= r2.x or l2.x >= r1.x):
+            return 0
+        if(r1.y >= l2.y or r2.y >= l1.y):
+            return 0
+
+        return 1
+
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+import math
+        
+if __name__=='__main__':
+    t=int(input())
+    for _ in range(t):
+        p=[0]*2
+        q=[0]*2
+        r=[0]*2
+        s=[0]*2
+        p[0],p[1],q[0],q[1],r[0],r[1],s[0],s[1]=map(int,input().strip().split(" "))
+        ob=Solution()
+        ans=ob.doOverlap(p,q,r,s)
+        print(ans)
+# } Driver Code Ends
